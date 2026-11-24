@@ -1,0 +1,17 @@
+{
+  "id": "/MTB/",
+  "name": "E-Bike MTB",
+  "short_name": "E-Bike MTB",
+  "description": "Batteria, fitness e storico per MTB",
+  "lang": "it",
+  "start_url": "/MTB/index.html",
+  "scope": "/MTB/",
+  "display": "standalone",
+  "background_color": "#f0f5f1",
+  "theme_color": "#2c7a3a",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
