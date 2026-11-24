@@ -69,6 +69,26 @@ select{font-size:14px;font-weight:600;background-image:url("data:image/svg+xml,%
 .hdel{position:absolute;top:10px;right:10px;background:none;border:none;font-size:18px;color:#ccc;cursor:pointer;padding:2px 8px;line-height:1}
 .hempty{text-align:center;font-size:13px;color:#bbb;padding:10px 0}
 .foot{text-align:center;font-size:11px;color:#bbb;padding:4px 0 10px}
+
+.sess h2{display:flex;justify-content:space-between;align-items:center}
+.sess h2 span{font-size:10px;color:#888;font-weight:600;text-transform:none;letter-spacing:0}
+.kmhead{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.kmhead>div:first-child{flex:1}
+input[type=range]{width:100%;margin:10px 0 2px;accent-color:#2c7a3a;height:34px;touch-action:pan-y;pointer-events:none;-webkit-appearance:none;appearance:none;background:transparent}
+input[type=range]::-webkit-slider-runnable-track{height:8px;background:#d4e8d4;border-radius:99px}
+input[type=range]::-moz-range-track{height:8px;background:#d4e8d4;border-radius:99px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:30px;height:30px;margin-top:-11px;border-radius:50%;background:#2c7a3a;border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.35)}
+input[type=range]::-moz-range-thumb{pointer-events:auto;width:24px;height:24px;border-radius:50%;background:#2c7a3a;border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.35)}
+.sres{margin-top:10px;font-size:12px;color:#2c7a3a;background:#e4f0e6;border-radius:9px;padding:8px 12px;font-weight:600}
+.stack{display:flex;height:14px;border-radius:99px;overflow:hidden;background:#e0e0e0;margin:12px 0 6px}
+.stack .s1{background:#52b564;transition:width .4s ease}
+.stack .s2{background:#6a1b9a;transition:width .4s ease}
+.legend{display:flex;justify-content:space-between;font-size:11px;color:#666;font-weight:600}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.bigtot{text-align:center;margin-bottom:4px}
+.bigtot .n{font-size:34px;font-weight:800;color:#2c7a3a;line-height:1}
+.bigtot .l{font-size:11px;color:#888;margin-top:3px}
+.hsub{font-size:11px;color:#777;margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -103,19 +123,67 @@ select{font-size:14px;font-weight:600;background-image:url("data:image/svg+xml,%
         <input type="number" id="fin" value="68" min="0" max="100" inputmode="numeric">
       </div>
     </div>
-    <div class="mt">
-      <label>Km percorsi <span class="tag">km</span></label>
-      <input type="number" id="km" value="43" min="0.1" step="0.1" inputmode="decimal">
+  </div>
+
+  <div class="card sess">
+    <h2>Sessione 1 <span>es. tratto pianeggiante</span></h2>
+    <div class="kmhead">
+      <div>
+        <label>Km percorsi <span class="tag">km</span></label>
+        <input type="number" id="km1" value="25" min="0" step="0.1" inputmode="decimal">
+      </div>
+      <div style="width:130px">
+        <label>Dislivello <span class="tag">m</span></label>
+        <input type="number" id="d1" value="0" min="0" step="10" inputmode="numeric">
+      </div>
     </div>
+    <input type="range" id="sl1" min="0" max="150" step="0.5" value="25">
+    <div class="barlbl"><span>0 km</span><span>150 km</span></div>
     <div class="mt">
       <label>Tipo di terreno</label>
-      <select id="ter">
+      <select id="ter1">
         <option value="1.00">Strada - asfalto liscio</option>
         <option value="1.25">Sterrato - ghiaia o terra battuta</option>
         <option value="1.60">Fango - terreno bagnato</option>
         <option value="1.90">Neve - neve o sabbia profonda</option>
       </select>
     </div>
+    <div class="sres" id="sr1">-</div>
+  </div>
+  <div class="card sess">
+    <h2>Sessione 2 <span>es. tratto alpino</span></h2>
+    <div class="kmhead">
+      <div>
+        <label>Km percorsi <span class="tag">km</span></label>
+        <input type="number" id="km2" value="18" min="0" step="0.1" inputmode="decimal">
+      </div>
+      <div style="width:130px">
+        <label>Dislivello <span class="tag">m</span></label>
+        <input type="number" id="d2" value="400" min="0" step="10" inputmode="numeric">
+      </div>
+    </div>
+    <input type="range" id="sl2" min="0" max="150" step="0.5" value="18">
+    <div class="barlbl"><span>0 km</span><span>150 km</span></div>
+    <div class="mt">
+      <label>Tipo di terreno</label>
+      <select id="ter2">
+        <option value="1.00">Strada - asfalto liscio</option>
+        <option value="1.25">Sterrato - ghiaia o terra battuta</option>
+        <option value="1.60">Fango - terreno bagnato</option>
+        <option value="1.90">Neve - neve o sabbia profonda</option>
+      </select>
+    </div>
+    <div class="sres" id="sr2">-</div>
+  </div>
+  <div class="card">
+    <h2>Totale percorso</h2>
+    <div class="bigtot"><div class="n" id="totkm">-</div><div class="l">km totali percorsi (sessione 1 + sessione 2)</div></div>
+    <div class="stack"><div class="s1" id="st1" style="width:50%"></div><div class="s2" id="st2" style="width:50%"></div></div>
+    <div class="legend">
+      <span><i class="dot" style="background:#52b564"></i><span id="lg1">-</span></span>
+      <span><i class="dot" style="background:#6a1b9a"></i><span id="lg2">-</span></span>
+    </div>
+    <div class="erow" style="margin-top:10px"><span class="k">Dislivello totale</span><span class="v" id="totd">-</span></div>
   </div>
   <div class="card">
     <h2>Risultati batteria</h2>
@@ -142,11 +210,12 @@ select{font-size:14px;font-weight:600;background-image:url("data:image/svg+xml,%
     <div class="badge ottima" id="badge">-</div>
     <p id="bdesc" style="font-size:12px;color:#666;margin-bottom:12px">-</p>
     <div class="erow"><span class="k">Wh/km misurati</span><span class="v" id="e1">-</span></div>
-    <div class="erow"><span class="k">Equivalente su strada</span><span class="v" id="e2">-</span></div>
-    <div class="erow"><span class="k">Fattore terreno</span><span class="v" id="e3">-</span></div>
+    <div class="erow"><span class="k">Equivalente su strada piana</span><span class="v" id="e2">-</span></div>
+    <div class="erow"><span class="k">Fattore terreno + dislivello</span><span class="v" id="e3">-</span></div>
     <div class="erow"><span class="k">Soglia ottima</span><span class="v" id="e4">-</span></div>
+    <div class="erow"><span class="k">Autonomia residua su piano</span><span class="v" id="e5">-</span></div>
   </div>
-  <div class="foot">Modifica i valori per ricalcolare</div>
+  <div class="foot">Modifica i valori per ricalcolare<br>Stima: 100 m di dislivello = circa 3 km di strada piana</div>
 </div>
 </div>
 
@@ -168,28 +237,10 @@ select{font-size:14px;font-weight:600;background-image:url("data:image/svg+xml,%
   </div>
   <div class="card">
     <h2>Dati percorso</h2>
-    <div class="row2">
-      <div>
-        <label>Km percorsi <span class="tag">km</span></label>
-        <input type="number" id="fkm" value="43" min="0.1" step="0.1" inputmode="decimal">
-      </div>
-      <div>
-        <label>Dislivello <span class="tag">m</span></label>
-        <input type="number" id="dis" value="500" min="0" max="9999" inputmode="numeric">
-      </div>
-    </div>
+    <div class="finfo" id="pinfo">-</div>
     <div class="mt">
       <label>Percentuale in salita <span class="tag">%</span></label>
       <input type="number" id="sal" value="30" min="0" max="100" inputmode="numeric">
-    </div>
-    <div class="mt">
-      <label>Terreno</label>
-      <select id="fter">
-        <option value="1.00">Strada - asfalto liscio</option>
-        <option value="1.25">Sterrato - ghiaia o terra battuta</option>
-        <option value="1.60">Fango - terreno bagnato</option>
-        <option value="1.90">Neve - neve o sabbia profonda</option>
-      </select>
     </div>
     <div class="mt">
       <label>Livello assistenza motore</label>
@@ -259,7 +310,7 @@ select{font-size:14px;font-weight:600;background-image:url("data:image/svg+xml,%
 <script>
 
 // Versione app: deve coincidere con VERSION in sw.js
-var APP_VERSION = '1.0.0';
+var APP_VERSION = '1.2.0';
 
 function initUpdates() {
   if (!('serviceWorker' in navigator)) return;
@@ -303,7 +354,7 @@ function importLegacy() {
     var hasNew = localStorage.getItem('mtb_history') !== null || localStorage.getItem('mtb_cap') !== null;
     if (hasOld && !hasNew) {
       if (confirm('Trovati dati salvati da una versione precedente (uscite e valori). Importarli?')) {
-        var keys = ['history','cap','ini','fin','km','ter','peso','eta','fkm','dis','sal','fter','ass','dur'];
+        var keys = ['history','cap','ini','fin','km','ter','peso','eta','sal','ass','dur'];
         var i;
         for (i = 0; i < keys.length; i++) {
           var v = localStorage.getItem('ebike_' + keys[i]);
@@ -331,67 +382,111 @@ function showTab(t) {
   }
 }
 
-function calcBattery() {
+var DISL_KM = 0.03; // 1 m di dislivello pesa come 0,03 km di strada piana (100 m = 3 km)
+
+function f1(n) { return (Math.round(n * 10) / 10).toString().replace('.', ','); }
+
+function sessione(n) {
+  var sel = gi('ter' + n);
+  var km = gf('km' + n); if (km < 0) km = 0;
+  var d  = gf('d' + n);  if (d < 0) d = 0;
+  var cf = parseFloat(sel.value) || 1;
+  var tn = sel.options[sel.selectedIndex].text.split(' - ')[0];
+  return {km: km, d: d, cf: cf, tn: tn};
+}
+
+function computeBattery() {
   var cap = gf('cap');
   var ini = gf('ini');
   var fin = gf('fin');
-  var km  = gf('km');
-  var cf  = gf('ter');
-  var sel = gi('ter');
-  var tn  = sel ? sel.options[sel.selectedIndex].text : '';
-  var tname = tn.indexOf(' - ') >= 0 ? tn.split(' - ')[0] : tn;
+  var s = [sessione(1), sessione(2)];
+  var km = s[0].km + s[1].km;
+  if (!cap || km <= 0) return null;
+  var D = s[0].d + s[1].d;
+  var i;
+  for (i = 0; i < 2; i++) s[i].w = s[i].km * s[i].cf + s[i].d * DISL_KM;
+  var eqkm = s[0].w + s[1].w;
+  var pu = (ini - fin) / 100;
+  var wh = cap * pu;
+  for (i = 0; i < 2; i++) {
+    s[i].wh = eqkm > 0 ? wh * s[i].w / eqkm : 0;
+    s[i].whkm = s[i].km > 0 ? s[i].wh / s[i].km : 0;
+  }
+  var eq = eqkm > 0 ? wh / eqkm : 0;
+  var pr = fin / 100;
+  var terr = [];
+  if (s[0].km > 0) terr.push(s[0].tn);
+  if (s[1].km > 0 && terr.indexOf(s[1].tn) < 0) terr.push(s[1].tn);
+  return {
+    cap: cap, ini: ini, fin: fin, s: s, km: km, D: D, eqkm: eqkm, pu: pu, wh: wh,
+    whkm: wh / km, eq: eq, factor: eqkm / km, pr: pr,
+    tot: pu > 0 ? km / pu : 0,
+    pct: Math.min(100, Math.max(0, pu * 100)),
+    badge: eq < 4 ? 'Ottima' : eq < 6 ? 'Buona' : eq < 9 ? 'Nella media' : 'Alta',
+    flatLeft: eq > 0 ? (cap * pr) / eq : 0,
+    tn: terr.join(' / ')
+  };
+}
 
-  if (!cap || !km || km <= 0) return;
-  if (!cf || cf <= 0) cf = 1;
+function calcBattery() {
+  var r = computeBattery();
+  if (!r) return;
+  var i;
+  for (i = 0; i < 2; i++) {
+    var x = r.s[i];
+    st('sr' + (i + 1), x.km > 0
+      ? '~ ' + Math.round(x.wh) + ' Wh | ' + x.whkm.toFixed(1) + ' Wh/km | ' + x.tn + (x.d > 0 ? ' | +' + Math.round(x.d) + ' m' : '')
+      : 'Nessun km in questa sessione');
+  }
 
-  var pu   = (ini - fin) / 100;
-  var wh   = cap * pu;
-  var whkm = wh / km;
-  var eq   = whkm / cf;
-  var pr   = fin / 100;
-  var tot  = pu > 0 ? km / pu : 0;
-  var pct  = Math.min(100, Math.max(0, pu * 100));
+  st('totkm', f1(r.km) + ' km');
+  st('totd', Math.round(r.D) + ' m');
+  var p1 = r.s[0].km / r.km * 100;
+  gi('st1').style.width = p1 + '%';
+  gi('st2').style.width = (100 - p1) + '%';
+  st('lg1', 'Sess. 1: ' + f1(r.s[0].km) + ' km');
+  st('lg2', 'Sess. 2: ' + f1(r.s[1].km) + ' km');
 
-  st('r1', wh.toFixed(0) + ' Wh');
-  st('r2', whkm.toFixed(2));
-  st('r3', (whkm * 10).toFixed(1));
-  st('r4', Math.round(pct) + '%');
-  gi('bar').style.width = pct + '%';
-  st('bl1', Math.round(fin) + '% rimasto');
-  st('bl2', Math.round(pct) + '% usato');
-  st('a1', Math.round(tot));
-  st('a2', Math.round(tot * pr));
-  st('a3', Math.round(cap * pr));
-  st('tbox', 'Terreno: ' + tname + ' (fattore ' + cf.toFixed(2) + 'x)');
+  st('r1', r.wh.toFixed(0) + ' Wh');
+  st('r2', r.whkm.toFixed(2));
+  st('r3', (r.whkm * 10).toFixed(1));
+  st('r4', Math.round(r.pct) + '%');
+  gi('bar').style.width = r.pct + '%';
+  st('bl1', Math.round(r.fin) + '% rimasto');
+  st('bl2', Math.round(r.pct) + '% usato');
+  st('a1', Math.round(r.tot));
+  st('a2', Math.round(r.tot * r.pr));
+  st('a3', Math.round(r.cap * r.pr));
+  st('tbox', 'Terreno: ' + r.tn + ' | dislivello ' + Math.round(r.D) + ' m (fattore ' + r.factor.toFixed(2) + 'x)');
 
   var b = gi('badge');
   var d = gi('bdesc');
-  if (eq < 4)      { b.className = 'badge ottima'; b.textContent = 'Ottima';       d.textContent = 'Consumi eccellenti per questo terreno.'; }
+  var eq = r.eq;
+  if (eq < 4)      { b.className = 'badge ottima'; b.textContent = 'Ottima';       d.textContent = 'Consumi eccellenti per questo percorso.'; }
   else if (eq < 6) { b.className = 'badge buona';  b.textContent = 'Buona';        d.textContent = 'Consumi nella norma.'; }
   else if (eq < 9) { b.className = 'badge media';  b.textContent = 'Nella media';  d.textContent = 'Consumi elevati, valuta di ridurre l\'assistenza.'; }
-  else             { b.className = 'badge alta';   b.textContent = 'Alta';         d.textContent = 'Consumi molto alti per questo terreno.'; }
+  else             { b.className = 'badge alta';   b.textContent = 'Alta';         d.textContent = 'Consumi molto alti per questo percorso.'; }
 
-  st('e1', whkm.toFixed(2) + ' Wh/km');
-  st('e2', eq.toFixed(2) + ' Wh/km');
-  st('e3', cf.toFixed(2) + 'x');
-  st('e4', '< ' + (4 * cf).toFixed(1) + ' Wh/km');
+  st('e1', r.whkm.toFixed(2) + ' Wh/km');
+  st('e2', r.eq.toFixed(2) + ' Wh/km');
+  st('e3', r.factor.toFixed(2) + 'x');
+  st('e4', '< ' + (4 * r.factor).toFixed(1) + ' Wh/km');
+  st('e5', Math.round(r.flatLeft) + ' km');
+  calcFitness();
 }
 
-function calcFitness() {
+function fitnessData() {
+  var r = computeBattery();
+  if (!r) return null;
   var peso = gf('peso'); if (!peso) peso = 75;
   var eta  = gf('eta');  if (!eta)  eta  = 65;
-  var km   = gf('fkm');
-  var dis  = gf('dis');
   var sal  = gf('sal');
-  var cf   = gf('fter'); if (!cf || cf <= 0) cf = 1;
   var ass  = gf('ass');  if (!ass)  ass  = 0.5;
   var dur  = gf('dur');  if (!dur || dur <= 0) dur = 1;
-  var sel  = gi('fter');
-  var ftn  = sel ? sel.options[sel.selectedIndex].text.split(' - ')[0] : '';
-  var asel = gi('ass');
-  var atn  = asel ? asel.options[asel.selectedIndex].text.split(' - ')[0] : '';
-
-  if (!km || km <= 0) return;
+  var km   = r.km;
+  var dis  = r.D;
+  // fattore terreno medio pesato sui km delle due sessioni
+  var cf   = (r.s[0].km * r.s[0].cf + r.s[1].km * r.s[1].cf) / km;
 
   var met = 4.5 + (cf - 1.0) * 3.0 + (sal / 100) * 2.5 + (dis / km) * 0.8;
   met = met * (1 - ass * 0.5);
@@ -399,10 +494,25 @@ function calcFitness() {
   if (met > 10)  met = 10;
 
   var kcalTot = met * peso * dur;
-  var kcalNet = kcalTot * (1 - ass * 0.6);
-  var kcalOra = kcalTot / dur;
+  var acquaBase = dur * 500;
+  var extraDis  = Math.round(dis / 100) * 50;
+  var extraTer  = Math.round((cf - 1.0) * 200);
+  var acquaMin  = Math.round(acquaBase + extraDis + extraTer);
+  return {r: r, peso: peso, eta: eta, ass: ass, dur: dur, km: km, dis: dis, cf: cf, met: met,
+          kcalTot: kcalTot, kcalNet: kcalTot * (1 - ass * 0.6), kcalOra: kcalTot / dur,
+          acquaBase: acquaBase, extraDis: extraDis, extraTer: extraTer,
+          acquaMin: acquaMin, acquaCons: Math.round(acquaMin * 1.3)};
+}
 
-  var fcMax  = Math.round(208 - (0.7 * eta));
+function calcFitness() {
+  var f = gi('pinfo');
+  var d = fitnessData();
+  if (!d) { if (f) f.textContent = 'Inserisci i km nella scheda Batteria'; return; }
+  var asel = gi('ass');
+  var atn  = asel ? asel.options[asel.selectedIndex].text.split(' - ')[0] : '';
+  var met = d.met;
+
+  var fcMax  = Math.round(208 - (0.7 * d.eta));
   var fcPerc = 0.4 + (met / 10) * 0.5;
   if (fcPerc > 0.9) fcPerc = 0.9;
   var fcMed  = Math.round(fcMax * fcPerc);
@@ -413,24 +523,19 @@ function calcFitness() {
   else if (zp < 0.80) zona = 'Z3';
   else if (zp < 0.90) zona = 'Z4';
   else                zona = 'Z5';
+  var borracce = Math.ceil(d.acquaCons / 500);
 
-  var acquaBase = dur * 500;
-  var extraDis  = Math.round(dis / 100) * 50;
-  var extraTer  = Math.round((cf - 1.0) * 200);
-  var acquaMin  = Math.round(acquaBase + extraDis + extraTer);
-  var acquaCons = Math.round(acquaMin * 1.3);
-  var borracce  = Math.ceil(acquaCons / 500);
-
-  st('finfo', 'Terreno: ' + ftn + ' | ' + atn + ' | MET: ' + met.toFixed(1));
-  st('f1', Math.round(kcalTot));
-  st('f2', Math.round(kcalNet));
-  st('f3', Math.round(kcalOra));
+  st('pinfo', 'Dalla scheda Batteria: ' + f1(d.km) + ' km | +' + Math.round(d.dis) + ' m | ' + d.r.tn);
+  st('finfo', 'Terreno: ' + d.r.tn + ' | ' + atn + ' | MET: ' + met.toFixed(1));
+  st('f1', Math.round(d.kcalTot));
+  st('f2', Math.round(d.kcalNet));
+  st('f3', Math.round(d.kcalOra));
   st('f4', met.toFixed(1));
-  st('w1', acquaMin);
-  st('w2', acquaCons);
-  st('w3', Math.round(acquaBase) + ' ml');
-  st('w4', extraDis + ' ml');
-  st('w5', extraTer + ' ml');
+  st('w1', d.acquaMin);
+  st('w2', d.acquaCons);
+  st('w3', Math.round(d.acquaBase) + ' ml');
+  st('w4', d.extraDis + ' ml');
+  st('w5', d.extraTer + ' ml');
   st('w6', borracce);
   st('hr1', fcMax);
   st('hr2', fcMed);
@@ -458,7 +563,8 @@ function loadHistory() {
                '<span class="htag">' + item.badge + '</span>';
     div.innerHTML = '<button class="hdel" data-idx="' + i + '">x</button>' +
                     '<div class="hdate">' + item.date + '</div>' +
-                    '<div class="hnote">' + item.terreno + ' | ' + item.km + ' km | ' + item.perc + '% batteria</div>' +
+                    '<div class="hnote">' + item.terreno + ' | ' + item.km + ' km' + (item.disl ? ' | +' + item.disl + ' m' : '') + ' | ' + item.perc + '% batteria</div>' +
+                    (item.s1 && item.s2 ? '<div class="hsub">S1: ' + item.s1.km + ' km, ' + item.s1.t + ', +' + item.s1.d + ' m | S2: ' + item.s2.km + ' km, ' + item.s2.t + ', +' + item.s2.d + ' m</div>' : '') +
                     '<div class="htags">' + tags + '</div>';
     list.appendChild(div);
   }
@@ -478,49 +584,22 @@ function delHistory(idx) {
 }
 
 function saveRide() {
-  var cap = gf('cap');
-  var ini = gf('ini');
-  var fin = gf('fin');
-  var km  = gf('km');
-  var cf  = gf('ter'); if (!cf || cf <= 0) cf = 1;
-  var sel = gi('ter');
-  var tn  = sel ? sel.options[sel.selectedIndex].text.split(' - ')[0] : '';
+  var r = computeBattery();
+  if (!r || r.cap <= 0) { alert('Inserisci dati validi nella tab Batteria prima di salvare'); return; }
+  var km = r.km, wh = r.wh, whkm = r.whkm, tn = r.tn, bdg = r.badge;
+  var tot = Math.round(r.tot);
+  var pct = Math.round(r.pu * 100);
 
-  if (!km || km <= 0 || !cap || cap <= 0) { alert('Inserisci dati validi nella tab Batteria prima di salvare'); return; }
-
-  var pu   = (ini - fin) / 100;
-  var wh   = cap * pu;
-  var whkm = wh / km;
-  var eq   = whkm / cf;
-  var tot  = pu > 0 ? Math.round(km / pu) : 0;
-  var pct  = Math.round(pu * 100);
-  var bdg  = eq < 4 ? 'Ottima' : eq < 6 ? 'Buona' : eq < 9 ? 'Nella media' : 'Alta';
-
-  var kcal = '';
-  var acqua = '';
-  var fkm = gf('fkm');
-  if (fkm > 0) {
-    var peso2 = gf('peso'); if (!peso2) peso2 = 75;
-    var eta2  = gf('eta');  if (!eta2)  eta2  = 65;
-    var dis2  = gf('dis');
-    var sal2  = gf('sal');
-    var cf2   = gf('fter'); if (!cf2 || cf2 <= 0) cf2 = 1;
-    var ass2  = gf('ass');  if (!ass2)  ass2  = 0.5;
-    var dur2  = gf('dur');  if (!dur2 || dur2 <= 0) dur2 = 1;
-    var met2  = 4.5 + (cf2 - 1) * 3 + (sal2 / 100) * 2.5 + (dis2 / fkm) * 0.8;
-    met2 = met2 * (1 - ass2 * 0.5);
-    if (met2 < 2.5) met2 = 2.5;
-    if (met2 > 10)  met2 = 10;
-    kcal  = Math.round(met2 * peso2 * dur2);
-    var amin = Math.round(dur2 * 500 + (dis2 / 100) * 50 + (cf2 - 1) * 200);
-    acqua = Math.round(amin * 1.3);
-  }
+  var fd = fitnessData();
+  var kcal = fd ? Math.round(fd.kcalTot) : '';
+  var acqua = fd ? fd.acquaCons : '';
 
   var now  = new Date();
   var date = now.toLocaleDateString('it-IT', {day:'2-digit', month:'2-digit', year:'numeric'}) +
              ' ' + now.toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
 
-  var item = {date:date, terreno:tn, km:km, perc:pct, wh:wh.toFixed(0), whkm:whkm.toFixed(2), tot:tot, badge:bdg, kcal:kcal, acqua:acqua};
+  var item = {date:date, terreno:tn, km:Math.round(km * 10) / 10, disl:Math.round(r.D), perc:pct, wh:wh.toFixed(0), whkm:whkm.toFixed(2), tot:tot, badge:bdg, kcal:kcal, acqua:acqua,
+              s1:{km:r.s[0].km, t:r.s[0].tn, d:Math.round(r.s[0].d)}, s2:{km:r.s[1].km, t:r.s[1].tn, d:Math.round(r.s[1].d)}};
   var raw  = localStorage.getItem('mtb_history');
   var data = raw ? JSON.parse(raw) : [];
   data.push(item);
@@ -535,12 +614,13 @@ function exportCSV() {
   var raw  = localStorage.getItem('mtb_history');
   var data = raw ? JSON.parse(raw) : [];
   if (data.length === 0) { alert('Nessuna uscita da esportare'); return; }
-  var header = '"Data","Terreno","Km","Batteria %","Wh","Wh/km","Autonomia km","Kcal","Acqua ml","Efficienza"';
+  var header = '"Data","Terreno","Km totali","Dislivello m","S1 km","S1 terreno","S1 disl m","S2 km","S2 terreno","S2 disl m","Batteria %","Wh","Wh/km","Autonomia km","Kcal","Acqua ml","Efficienza"';
   var rows   = [header];
   var i;
   for (i = 0; i < data.length; i++) {
     var d = data[i];
-    rows.push('"' + d.date + '","' + d.terreno + '","' + d.km + '","' + d.perc + '","' + d.wh + '","' + d.whkm + '","' + d.tot + '","' + (d.kcal||'') + '","' + (d.acqua||'') + '","' + d.badge + '"');
+    var a = d.s1 || {}, b2 = d.s2 || {};
+    rows.push('"' + d.date + '","' + d.terreno + '","' + d.km + '","' + (d.disl||0) + '","' + (a.km !== undefined ? a.km : d.km) + '","' + (a.t||d.terreno) + '","' + (a.d||0) + '","' + (b2.km !== undefined ? b2.km : '') + '","' + (b2.t||'') + '","' + (b2.d||'') + '","' + d.perc + '","' + d.wh + '","' + d.whkm + '","' + d.tot + '","' + (d.kcal||'') + '","' + (d.acqua||'') + '","' + d.badge + '"');
   }
   var csv  = '\uFEFF' + rows.join('\n');
   var blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
@@ -564,24 +644,34 @@ function addListener(id, ev, fn) {
 
 window.onload = function() {
   importLegacy();
-  var allKeys = ['cap','ini','fin','km','ter','peso','eta','fkm','dis','sal','fter','ass','dur'];
+  var allKeys = ['cap','ini','fin','km1','d1','ter1','km2','d2','ter2','peso','eta','sal','ass','dur'];
   var i;
   for (i = 0; i < allKeys.length; i++) {
     var v = localStorage.getItem('mtb_' + allKeys[i]);
     if (v !== null) { var el = gi(allKeys[i]); if (el) el.value = v; }
   }
 
-  var battKeys = ['cap','ini','fin','km'];
+  var battKeys = ['cap','ini','fin','d1','d2'];
   for (i = 0; i < battKeys.length; i++) {
     (function(k) { addListener(k, 'input', function() { saveVal(k); calcBattery(); }); })(battKeys[i]);
   }
-  addListener('ter', 'change', function() { saveVal('ter'); calcBattery(); });
+  addListener('ter1', 'change', function() { saveVal('ter1'); calcBattery(); });
+  addListener('ter2', 'change', function() { saveVal('ter2'); calcBattery(); });
+  // km: campo numerico e barra sempre allineati
+  var n;
+  for (n = 1; n <= 2; n++) {
+    (function(k) {
+      var inp = gi('km' + k), sl = gi('sl' + k);
+      sl.value = inp.value;
+      inp.addEventListener('input', function() { sl.value = inp.value; saveVal('km' + k); calcBattery(); });
+      sl.addEventListener('input', function() { inp.value = sl.value; saveVal('km' + k); calcBattery(); });
+    })(n);
+  }
 
-  var fitKeys = ['peso','eta','fkm','dis','sal','dur'];
+  var fitKeys = ['peso','eta','sal','dur'];
   for (i = 0; i < fitKeys.length; i++) {
     (function(k) { addListener(k, 'input', function() { saveVal(k); calcFitness(); }); })(fitKeys[i]);
   }
-  addListener('fter', 'change', function() { saveVal('fter'); calcFitness(); });
   addListener('ass',  'change', function() { saveVal('ass');  calcFitness(); });
 
   addListener('savebtn', 'click', saveRide);
@@ -599,6 +689,7 @@ window.onload = function() {
 // Swipe touch - horizontal only, ignores vertical scroll
 var tsX = 0;
 var tsY = 0;
+var tsIgnore = false;
 var tabOrder = ['battery', 'fitness', 'history'];
 
 function currentTabIndex() {
@@ -611,11 +702,13 @@ function currentTabIndex() {
 }
 
 document.addEventListener('touchstart', function(e) {
+  tsIgnore = !!(e.target && e.target.type === 'range');
   tsX = e.changedTouches[0].screenX;
   tsY = e.changedTouches[0].screenY;
 }, {passive: true});
 
 document.addEventListener('touchend', function(e) {
+  if (tsIgnore) { tsIgnore = false; return; }
   var dx = e.changedTouches[0].screenX - tsX;
   var dy = e.changedTouches[0].screenY - tsY;
   // Ignore if vertical movement is dominant

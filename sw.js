@@ -1,5 +1,5 @@
 // Cambia questo numero a ogni nuova versione (deve coincidere con APP_VERSION in index.html)
-var VERSION = '1.0.0';
+var VERSION = '1.2.0';
 var CACHE = 'mtb-' + VERSION;
 var FILES = ['index.html', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 
